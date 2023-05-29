@@ -9,6 +9,10 @@ class <%= model_class_name %> < Angsa::Base
       # { name: :id, source: 'id', searchable: false, type: :integer },
       # { name: :name, source: 'name', searchable: true, type: :string },
       # { name: :available, source: 'available', searchable: true, type: :boolean },
+
+      # Actions: Important! Declare either id or slug
+      # { name: :id, source: 'id', searchable: false, type: :integer },
+      # { name: :slug, source: 'slug', searchable: false, type: :integer },
     ]
   end
 end
