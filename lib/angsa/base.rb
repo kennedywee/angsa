@@ -40,8 +40,12 @@ module Angsa
     def extract_records(records)
       records.map do |record|
         columns.map do |column|
-          source = column[:source].split('.')
-          [column[:name], source.size == 1 ? record.send(source.first) : record.send(source.first).send(source.last)]
+          if column[:source].include?('custom_')
+            [column[:name], send(column[:source], record)]
+          else
+            source = column[:source].split('.')
+            [column[:name], source.size == 1 ? record.send(source.first) : record.send(source.first).send(source.last)]
+          end
         end.to_h
       end
     end
